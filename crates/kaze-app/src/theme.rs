@@ -12,6 +12,9 @@ const ACCENT: u32 = 0x6cc7dc;
 pub fn accent() -> Hsla {
     rgb(ACCENT).into()
 }
+pub fn amber() -> Hsla {
+    rgb(0xd9b26f).into()
+}
 /// Light frosting over the window glass (headers, sidebar).
 pub fn panel() -> Hsla {
     alpha(rgb(0xffffff).into(), 0.025)
