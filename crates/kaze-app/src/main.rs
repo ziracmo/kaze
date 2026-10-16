@@ -1,6 +1,6 @@
-mod home;
 #[macro_use]
 mod i18n;
+mod home;
 mod settings;
 mod theme;
 
@@ -40,7 +40,11 @@ fn main() {
             let options = window_options(cx);
             gpui_kit::open_window(options, cx, |window, cx| {
                 window.set_window_title("Kaze");
-                cx.new(|_| Home::new(settings, true))
+                cx.new(|cx| {
+                    let mut home = Home::new(settings, true);
+                    home.rescan(cx);
+                    home
+                })
             })
             .expect("failed to open the main window");
             cx.on_window_closed(|cx, _| cx.quit()).detach();
