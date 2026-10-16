@@ -1,0 +1,4 @@
+# Every process goes through kaze_core::process::command (one place to set up the environment).
+disallowed-methods = [
+    { path = "std::process::Command::new", reason = "use kaze_core::process::command" },
+]
